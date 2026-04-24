@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect("biblioteka.db")
 cursor = conn.cursor()
 
-# Tabulas izveide
+# tabula
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS gramatas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS gramatas (
 )
 """)
 
-# Ievietojam latviešu grāmatas
+# grāmatas
 cursor.execute("INSERT INTO gramatas (nosaukums, autors, gads) VALUES (?, ?, ?)",
                ("Dvēseļu putenis", "Aleksandrs Grīns", 1935))
 
@@ -25,7 +25,7 @@ cursor.execute("INSERT INTO gramatas (nosaukums, autors, gads) VALUES (?, ?, ?)"
 
 conn.commit()
 
-# Izvadām visas grāmatas
+
 print("Visas grāmatas:")
 cursor.execute("SELECT * FROM gramatas")
 for g in cursor.fetchall():
