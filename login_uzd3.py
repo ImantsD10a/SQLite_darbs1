@@ -5,7 +5,7 @@ from datetime import datetime
 conn = sqlite3.connect("lietotaji.db")
 cursor = conn.cursor()
 
-# Tabula
+# tabula
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS lietotaji (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS lietotaji (
 def hash_parole(parole):
     return hashlib.sha256(parole.encode()).hexdigest()
 
-# Reģistrācija
+# reģistrācija
 def registret(lietotajvards, parole):
     try:
         hashed = hash_parole(parole)
@@ -33,7 +33,7 @@ def registret(lietotajvards, parole):
     except:
         print("Lietotājs jau eksistē!")
 
-# Pieslēgšanās
+# pieslēgšanās
 def login(lietotajvards, parole):
     hashed = hash_parole(parole)
 
@@ -47,14 +47,14 @@ def login(lietotajvards, parole):
     else:
         print("Nepareizs lietotājvārds vai parole!")
 
-# Lietotāju saraksts
+# lietotāju saraksts
 def visi_lietotaji():
     print("\nVisi lietotāji:")
     cursor.execute("SELECT * FROM lietotaji")
     for u in cursor.fetchall():
         print(u)
 
-# Tests
+# tests
 registret("janis", "1234")
 registret("anna", "abcd")
 
